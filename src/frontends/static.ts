@@ -225,7 +225,7 @@ export class Static {
     canvas: HTMLCanvasElement,
     latlng: Point,
     display_zoom: number,
-    options: StaticOptions
+    options?: StaticOptions
   ) {
     let dpr = window.devicePixelRatio;
     let width = canvas.clientWidth;
@@ -234,7 +234,7 @@ export class Static {
       canvas.width = width * dpr;
       canvas.height = height * dpr;
     }
-    if (options.lang) canvas.lang = options.lang;
+    if (options?.lang) canvas.lang = options.lang;
     let ctx = canvas.getContext("2d")!;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     return this.drawContext(ctx, width, height, latlng, display_zoom);
@@ -266,7 +266,7 @@ export class Static {
     top_left: Point,
     bottom_right: Point,
     width: number,
-    options: StaticOptions
+    options?: StaticOptions
   ) {
     let delta_degrees = bottom_right.x - top_left.x;
     let center = new Point(
